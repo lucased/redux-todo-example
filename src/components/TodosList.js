@@ -1,16 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import TodoItem from './TodoItem'
+import { getTodosAsIds } from '../selectors/todo'
 
-const TodosList = ({ todos, toggleTodo }) => {
+const TodosList = ({ todosAsIds }) => {
   return (
     <ul style={{listStyle: 'none', padding: 0}}>
-      {todos.map(todo => (
-        <li key={todo.id}>
-          <input checked={todo.completed} onChange={() => toggleTodo(todo.id)} type="checkbox" />
-          <span style={{textDecoration: todo.completed && 'line-through'}}>{todo.name}</span>
-        </li>
+      {todosAsIds.map(todoId => (
+        <TodoItem key={todoId} todoId={todoId} />
       ))}
     </ul>
   )
 }
 
-export default TodosList
+const mapStateToProps = state => ({
+  todosAsIds: getTodosAsIds(state),
+})
+
+export default connect(mapStateToProps)(TodosList)

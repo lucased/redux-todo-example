@@ -10,7 +10,7 @@ function filterReducer(state = 'SHOW_ALL', action) {
 }
 
 function applySetFilter(state, action) {
-    return action.filer
+  return action.filter
 }
 
 export default filterReducer

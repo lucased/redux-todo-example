@@ -1,4 +1,10 @@
-import { TODO_ADD, TODO_TOGGLE, TODO_UPDATE, FILTER_SET } from '../constants/actionTypes'
+import {
+  TODO_ADD,
+  TODO_TOGGLE,
+  TODO_UPDATE,
+  TODO_DELETE,
+  FILTER_SET,
+} from '../constants/actionTypes'
 
 export function doAddTodo(id, name) {
   return {
@@ -21,9 +27,16 @@ export function doUpdateTodo(id, name) {
   }
 }
 
+export function doDeleteTodo(id) {
+  return {
+    type: TODO_DELETE,
+    todo: { id },
+  }
+}
+
 export function doSetFilter(filter) {
   return {
     type: FILTER_SET,
-    filter
+    filter,
   }
 }
