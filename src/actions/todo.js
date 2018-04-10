@@ -4,7 +4,18 @@ import {
   TODO_UPDATE,
   TODO_DELETE,
   FILTER_SET,
+  NOTIFICATION_HIDE,
 } from '../constants/actionTypes'
+
+export function doAddTodoWithNotifcation(id, name) {
+  return function(dispatch) {
+    dispatch(doAddTodo(id, name))
+
+    setTimeout(() => {
+      dispatch(doHideNotification(id))
+    }, 5000)
+  }
+}
 
 export function doAddTodo(id, name) {
   return {
@@ -38,5 +49,12 @@ export function doSetFilter(filter) {
   return {
     type: FILTER_SET,
     filter,
+  }
+}
+
+export function doHideNotification(id) {
+  return {
+    type: NOTIFICATION_HIDE,
+    id
   }
 }

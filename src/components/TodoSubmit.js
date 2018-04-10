@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import uuid from 'uuid/v4'
 import { bindActionCreators } from 'redux'
-import { doAddTodo } from '../actions/todo'
+import { doAddTodoWithNotifcation} from '../actions/todo'
 
 class Todo extends Component {
   constructor(props) {
@@ -27,7 +27,7 @@ class Todo extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      addTodo: doAddTodo,
+      addTodo: doAddTodoWithNotifcation,
     },
     dispatch,
   )
